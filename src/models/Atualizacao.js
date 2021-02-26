@@ -14,7 +14,6 @@ class Atualizacao extends Model {
     static associate5(models) {
         this.belongsTo(models.Lote, { foreignKey: 'lote_id', as: 'pertence' });
     }
-
 }
 module.exports = Atualizacao;
 

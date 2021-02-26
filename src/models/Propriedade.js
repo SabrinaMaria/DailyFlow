@@ -23,7 +23,5 @@ class Propriedade extends Model {
     this.belongsTo(models.Integradora, { foreignKey: 'integradora_id', as: 'possui' });
     this.belongsTo(models.Usuario, { foreignKey: 'usuario_id', as: 'pertence' });
   }
-
-
 }
 module.exports = Propriedade;

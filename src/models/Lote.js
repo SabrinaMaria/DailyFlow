@@ -24,7 +24,6 @@ class Lote extends Model {
         this.belongsTo(models.Raca, { foreignKey: 'raca_id', as: 'raca' });
 
     }
-
 }
 module.exports = Lote;
 

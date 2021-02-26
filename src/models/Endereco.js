@@ -19,7 +19,5 @@ class Endereco extends Model {
         this.belongsTo(models.Integradora, { foreignKey: 'integradora_id', as: 'possui' });
         this.belongsTo(models.Propriedade, { foreignKey: 'propriedade_id', as: 'pertence' });
     }
-
-
 }
 module.exports = Endereco;
