@@ -6,6 +6,7 @@ module.exports = {
         let endereco = "";
         const { id } = req.params;
         const { tipo } = req.params;
+        
         //se 1 é integradora, se 2 é propriedade
         if (tipo == 1) {
             const integradora = await Integradora.findByPk(id);
