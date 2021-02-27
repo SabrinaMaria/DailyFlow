@@ -5,7 +5,6 @@ module.exports = {
     async store(req, res) {
         let endereco = "";
         const { id } = req.params;
-        const { uf, cidade, bairro, rua, numero, cep, complemento } = req.body;
         const { tipo } = req.params;
         //se 1 é integradora, se 2 é propriedade
         if (tipo == 1) {

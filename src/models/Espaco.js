@@ -16,7 +16,6 @@ class Espaco extends Model {
     static associate2(models) {
         this.belongsTo(models.Propriedade, { foreignKey: 'propriedade_id', as: 'pertence' });
     }
-
 }
 module.exports = Espaco;
 
