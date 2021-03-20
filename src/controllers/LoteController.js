@@ -4,6 +4,20 @@ const Lote = require('../models/Lote');
 const Raca = require('../models/Raca');
 
 module.exports = {
+    async show(req, res) {
+        const lotes = await Lote.findAll();
+
+        return res.json(lotes);
+    },
+
+    async index(req, res) {
+        const { lote_id } = req.params;
+        
+        const lote = await Lote.findByPk(lote_id);
+
+        return res.json(lote);
+    },
+
     async store(req, res) {
         const { espaco_id } = req.params;
         const { raca_id } = req.params;

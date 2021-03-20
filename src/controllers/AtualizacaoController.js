@@ -2,6 +2,12 @@ const Lote = require('../models/Lote');
 const Atualizacao = require('../models/Atualizacao');
 
 module.exports = {
+    async show(req, res) {
+        const atualizacoes = await Atualizacao.findAll();
+
+        return res.json(atualizacoes);
+    },
+
     async store(req, res) {
         const { lote_id } = req.params;
         const { data, peso, tamanho_efetivo, mortalidade } = req.body;

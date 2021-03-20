@@ -37,7 +37,7 @@ module.exports = {
             },
             data_entrega: {
                 type: Sequelize.DATE,
-                allowNull: false,
+                allowNull: true,
             },
             tamanho_previsto: {
                 type: Sequelize.INTEGER,
