@@ -22,4 +22,8 @@ routes.get('/lotes/:lote_id', LoteController.index);
 routes.get('/lotes', LoteController.show);
 routes.get('/atualizacoes', AtualizacaoController.show);
 
+routes.put('/raca/:raca_id/espaco/:espaco_id/lotes/:lote_id', LoteController.update);
+
+routes.delete('/lotes/:lote_id', LoteController.delete);
+
 module.exports = routes; 
