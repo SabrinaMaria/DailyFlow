@@ -8,7 +8,7 @@ module.exports = {
         const { raca_id } = req.params;
         const { perdas_no_transporte, data_recebimento, previsao_entrega, data_entrega, tamanho_previsto,
             tamanho_efetivo, peso_entrada, racao_inicial, racao_c1, racao_c2, racao_final,
-            inicio_horario_jejum } = req.body;
+            inicio_horario_jejum } = req.query;
 
         const raca = await Raca.findByPk(raca_id);
         const espaco = await Espaco.findByPk(espaco_id);
@@ -36,11 +36,14 @@ module.exports = {
         const { espaco_id } = req.params;
         const { perdas_no_transporte, data_recebimento, previsao_entrega, data_entrega, tamanho_previsto,
             tamanho_efetivo, peso_entrada, racao_inicial, racao_c1, racao_c2, racao_final,
-            inicio_horario_jejum } = req.body;
+            inicio_horario_jejum } = req.query;
 
         const lote = await Lote.findByPk(lote_id);
         const raca = await Raca.findByPk(raca_id);
         const espaco = await Espaco.findByPk(espaco_id);
+
+        console.log("AAAAAAAAAAAAA");
+        console.log(previsao_entrega);
 
         if (!raca) {
             return res.status(400).json({ error: 'Raca não cadastrada. Necessário cadastrar Raca para inserir o lote.' });
@@ -58,11 +61,11 @@ module.exports = {
 
         return res.json(lote);
     },
-    
+
     async show(req, res) {
         const lotes = await Lote.findAll();
 
-        return res.json(lotes);
+        return res.json(lotes.sort((a, b) => a.id < b.id ? 1 : a.id > b.id ? -1 : 0));
     },
 
     async index(req, res) {
