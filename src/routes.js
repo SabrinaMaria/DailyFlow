@@ -7,10 +7,13 @@ const EspacoController = require('./controllers/EspacoController');
 const LoteController = require('./controllers/LoteController');
 const EnderecoController = require('./controllers/EnderecoController');
 const AtualizacaoController = require('./controllers/AtualizacaoController');
+const FluxoDeCaixaController = require('./controllers/FluxoDeCaixaController');
+
 const routes = express.Router();
 
 routes.post('/usuarios', UsuarioController.store);
 routes.post('/racas', RacaController.store);
+routes.post('/fluxoDeCaixas/propriedade/:propriedade_id/espaco/:espaco_id', FluxoDeCaixaController.store);
 routes.post('/integradoras', IntegradoraController.store);
 routes.post('/integradora/:integradora_id/usuario/:usuario_id/propriedades', PropriedadeController.store, UsuarioController.store);
 routes.post('/propriedade/:propriedade_id/espacos', EspacoController.store, PropriedadeController.store);

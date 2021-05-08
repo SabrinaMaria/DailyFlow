@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('fluxosDeCaixa', {
+    return queryInterface.createTable('fluxo_de_caixas', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -31,6 +31,10 @@ module.exports = {
         type: Sequelize.DOUBLE,
         allowNull: false,
       },
+      descricao: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       receita: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
@@ -46,6 +50,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('fluxosDeCaixa');
+    return queryInterface.dropTable('fluxoDeCaixas');
   }
 };
