@@ -8,6 +8,8 @@ const Espaco = require('../models/Espaco');
 const Lote = require('../models/Lote');
 const Endereco = require('../models/Endereco');
 const Atualizacao = require('../models/Atualizacao');
+const FluxoDeCaixa = require('../models/FluxoDeCaixa');
+
 
 const connection = new Sequelize(dbConfig);
 
@@ -19,11 +21,13 @@ Espaco.init(connection);
 Lote.init(connection);
 Endereco.init(connection);
 Atualizacao.init(connection);
+FluxoDeCaixa.init(connection);
 
 Propriedade.associate(connection.models);
 Espaco.associate2(connection.models);
 Lote.associate3(connection.models);
 Endereco.associate4(connection.models);
 Atualizacao.associate5(connection.models);
+FluxoDeCaixa.associate6(connection.models);
 
 module.exports = connection;
