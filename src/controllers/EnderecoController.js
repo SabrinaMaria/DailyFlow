@@ -11,7 +11,7 @@ module.exports = {
         if (tipo == 1) {
             const integradora = await Integradora.findByPk(id);
             if (!integradora) {
-                return res.status(400).json({ error: 'Integradora não cadastrada, tente novamente.' });
+                return res.status(400).json({ error: 'Integradora não cadastrada.' });
             }
             endereco = {
                 uf: req.body.uf,
