@@ -42,9 +42,6 @@ module.exports = {
         const raca = await Raca.findByPk(raca_id);
         const espaco = await Espaco.findByPk(espaco_id);
 
-        console.log("AAAAAAAAAAAAA");
-        console.log(previsao_entrega);
-
         if (!raca) {
             return res.status(400).json({ error: 'Raca não cadastrada. Necessário cadastrar Raca para inserir o lote.' });
         }
