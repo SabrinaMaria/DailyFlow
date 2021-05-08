@@ -9,6 +9,7 @@ const Lote = require('../models/Lote');
 const Endereco = require('../models/Endereco');
 const Atualizacao = require('../models/Atualizacao');
 
+
 const connection = new Sequelize(dbConfig);
 
 Usuario.init(connection);

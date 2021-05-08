@@ -2,8 +2,8 @@ module.exports = {
   dialect: 'mysql',
   host: 'localhost',
   username: 'root',
-  password: 'root',
-  database: 'daily_flow',
+  password: '',
+  database: 'sqlnode',
   define: {
     timestamps: true,
     underscored: true,
