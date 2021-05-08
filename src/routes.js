@@ -13,7 +13,7 @@ const routes = express.Router();
 
 routes.post('/usuarios', UsuarioController.store);
 routes.post('/racas', RacaController.store);
-routes.post('/fluxoDeCaixas/propriedade/:propriedade_id/espaco/:espaco_id', FluxoDeCaixaController.store);
+routes.post('/fluxo_caixa/propriedade/:propriedade_id/espaco/:espaco_id', FluxoDeCaixaController.store);
 routes.post('/integradoras', IntegradoraController.store);
 routes.post('/integradora/:integradora_id/usuario/:usuario_id/propriedades', PropriedadeController.store, UsuarioController.store);
 routes.post('/propriedade/:propriedade_id/espacos', EspacoController.store, PropriedadeController.store);
@@ -29,6 +29,7 @@ routes.get('/propriedade/:propriedade_id', PropriedadeController.index);
 routes.get('/raca/:raca_id', RacaController.index);
 routes.get('/integradora/:integradora_id', IntegradoraController.index);
 routes.get('/usuario/:usuario_id', UsuarioController.index);
+routes.get('/fluxo/:fluxo_id', FluxoDeCaixaController.index);
 routes.get('/lotes', LoteController.show);
 routes.get('/atualizacoes', AtualizacaoController.show);
 
@@ -40,6 +41,7 @@ routes.put('/integradora/:integradora_id/usuario/:usuario_id/propriedade/:propri
 routes.put('/raca/:raca_id', RacaController.update);
 routes.put('/integradora/:integradora_id', IntegradoraController.update);
 routes.put('/usuario/:usuario_id', UsuarioController.update);
+routes.put('/fluxo_caixa/propriedade/:propriedade_id/espaco/:espaco_id/fluxo/:fluxo_id', FluxoDeCaixaController.update);
 
 routes.delete('/lotes/:lote_id', LoteController.delete);
 routes.delete('/atualizacao/:atualizacao_id', AtualizacaoController.delete);
@@ -49,5 +51,6 @@ routes.delete('/propriedade/:propriedade_id', PropriedadeController.delete);
 routes.delete('/raca/:raca_id', RacaController.delete);
 routes.delete('/integradora/:integradora_id', IntegradoraController.delete);
 routes.delete('/usuario/:usuario_id', UsuarioController.delete);
+routes.delete('/fluxo/:fluxo_id', FluxoDeCaixaController.delete);
 
 module.exports = routes; 

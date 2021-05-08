@@ -2,11 +2,10 @@ const Espaco = require('../models/Espaco');
 const Propriedade = require('../models/Propriedade');
 const FluxoDeCaixa = require('../models/FluxoDeCaixa');
 
-
 module.exports = {
     async store(req, res) {
         let { espaco_id, propriedade_id } = req.params;
-        const { receita, data, valor, descricao } = req.query;
+        const { receita, data, valor, descricao } = req.body;
 
         if (espaco_id == 0) {
             espaco_id = null;
@@ -36,53 +35,55 @@ module.exports = {
     },
 
     async update(req, res) {
-        const { espaco_id } = req.params;
-        const { propriedade_id } = req.params;
-        const { receita, data, valor, descricao } = req.query;
+        let { espaco_id, propriedade_id, fluxo_id } = req.params;
+        const { receita, data, valor, descricao } = req.body;
 
-        const fluxoDeCaixas = await Espaco.findByPk(fluxoDeCaixas_id);
-        const propriedade = await Propriedade.findByPk(propriedade_id);
-        const espaco = await Espaco.findByPk(espaco_id);
+        const fluxoDeCaixa = await FluxoDeCaixa.findByPk(fluxo_id);
 
-        if (!propriedade) {
-            return res.status(400).json({ error: 'propriedade não encontrada.' });
+        if (espaco_id == 0) {
+            espaco_id = null;
+        } else {
+            const espaco = await Espaco.findByPk(espaco_id);
+
+            if (!espaco) {
+                return res.status(400).json({ error: 'Espaco não encontrado.' });
+            }
         }
 
-        if (!espaco) {
-            return res.status(400).json({ error: 'Espaco não encontrado.' });
-        }
+        if (propriedade_id == 0) {
+            propriedade_id = null;
+        } else {
+            const propriedade = await Propriedade.findByPk(propriedade_id);
 
-        await fluxoDeCaixas.update({
-            fluxoDeCaixas_id, receita, valor, descricao, data, propriedade_id, espaco_id
+            if (!propriedade) {
+                return res.status(400).json({ error: 'Propriedade não encontrada.' });
+            }
+        }
+        await fluxoDeCaixa.update({
+            receita, valor, data, descricao, espaco_id, propriedade_id
         });
 
-        return res.json(fluxoDeCaixas);
-    },
-
-    async show(req, res) {
-        const fluxoDeCaixas = await FluxoDeCaixa.findAll();
-
-        return res.json(fluxoDeCaixas.sort((a, b) => a.id < b.id ? 1 : a.id > b.id ? -1 : 0));
+        return res.json(fluxoDeCaixa);
     },
 
     async index(req, res) {
-        const { fluxoDeCaixas_id } = req.params;
+        const { fluxo_id } = req.params;
 
-        const fluxoeCaixas = await fluxoDeCaixa.findByPk(fluxoDeCaixas_id);
+        const fluxoDeCaixa = await FluxoDeCaixa.findByPk(fluxo_id);
 
-        return res.json(fluxoDeCaixas);
+        return res.json(fluxoDeCaixa);
     },
 
     async delete(req, res) {
-        const { fluxoDeCaixas_id } = req.params;
+        const { fluxo_id } = req.params;
 
-        const fluxoDeCaixas = await FluxoDeCaixa.findByPk(fluxoDeCaixas_id);
+        const fluxoDeCaixa = await FluxoDeCaixa.findByPk(fluxo_id);
 
-        if (!fluxoDeCaixas) {
+        if (!fluxoDeCaixa) {
             return res.status(400).json({ error: 'Registro não encontrado!' });
         }
 
-        await fluxoDeCaixas.destroy();
+        await fluxoDeCaixa.destroy();
 
         return res.json('Registro excluído com sucesso!');
     }
