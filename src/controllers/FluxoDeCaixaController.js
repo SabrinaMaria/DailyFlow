@@ -66,6 +66,12 @@ module.exports = {
         return res.json(fluxoDeCaixa);
     },
 
+    async show(req, res) {
+        const fluxos = await FluxoDeCaixa.findAll();
+
+        return res.json(fluxos.sort((a, b) => a.id < b.id ? 1 : a.id > b.id ? -1 : 0));
+    },
+
     async index(req, res) {
         const { fluxo_id } = req.params;
 

@@ -32,6 +32,7 @@ routes.get('/usuario/:usuario_id', UsuarioController.index);
 routes.get('/fluxo/:fluxo_id', FluxoDeCaixaController.index);
 routes.get('/lotes', LoteController.show);
 routes.get('/atualizacoes', AtualizacaoController.show);
+routes.get('/fluxos', FluxoDeCaixaController.show);
 
 routes.put('/raca/:raca_id/espaco/:espaco_id/lotes/:lote_id', LoteController.update);
 routes.put('/lotes/:lote_id/atualizacao/:atualizacao_id', AtualizacaoController.update);
