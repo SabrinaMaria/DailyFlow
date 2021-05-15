@@ -5,7 +5,7 @@ const FluxoDeCaixa = require('../models/FluxoDeCaixa');
 module.exports = {
     async store(req, res) {
         let { espaco_id, propriedade_id } = req.params;
-        const { receita, data, valor, descricao } = req.body;
+        const { receita, data, valor, descricao } = req.query;
 
         if (espaco_id == 0) {
             espaco_id = null;
@@ -36,7 +36,7 @@ module.exports = {
 
     async update(req, res) {
         let { espaco_id, propriedade_id, fluxo_id } = req.params;
-        const { receita, data, valor, descricao } = req.body;
+        const { receita, data, valor, descricao } = req.query;
 
         const fluxoDeCaixa = await FluxoDeCaixa.findByPk(fluxo_id);
 
